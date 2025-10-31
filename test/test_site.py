@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import time #bad example
 from pages.homepage import HomePage
 from pages.product import ProductPage
 import allure
@@ -19,5 +18,4 @@ def test_two_items(driver):
     homepage = HomePage(driver)
     homepage.open()
     homepage.click_monitor() 
-    time.sleep(2) # bad example
     homepage.check_products_count(2)

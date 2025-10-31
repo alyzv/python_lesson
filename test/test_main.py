@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture()
 def before_after():
     print('\n Before test')

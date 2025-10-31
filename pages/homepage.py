@@ -1,5 +1,9 @@
 from selenium.webdriver.common.by import By
 import allure
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
 
 class HomePage:
     def __init__(self, driver):
@@ -18,8 +22,12 @@ class HomePage:
         with allure.step('Click on element Samsung Galaxy s6'):
             monitor_link = self.driver.find_element(By.CSS_SELECTOR, '''[onclick="byCat('monitor')"]''')
             monitor_link.click()
+            print("IS Clicked")
 
     def check_products_count(self, count):
         with allure.step('Check products count'):
+            wait = WebDriverWait(self.driver, 5)
+            element = wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR,".card"), "Apple monitor 24"))
             monitors = self.driver.find_elements(By.CSS_SELECTOR, '.card')
+            print(monitors)
             assert len(monitors) == count
